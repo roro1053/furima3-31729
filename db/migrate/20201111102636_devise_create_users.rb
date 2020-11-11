@@ -6,6 +6,13 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
+      t.string :nickname
+      t.string :fist_name
+      t.string :last_name
+      t.string :first_yomigana
+      t.string :last_yomigana
+      t.date :birth_date
+      #モデルでバリデーションを記述するので、オプションはつけない
 
       ## Recoverable
       t.string   :reset_password_token
