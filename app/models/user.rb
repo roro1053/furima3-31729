@@ -11,7 +11,6 @@ validates :password, format: { with: /\A[a-z\d]+\z/}
   validates :nickname
   validates :birth_date
   
-
   with_options format: { with: /\A[ぁ-んァ-ン一-龥]+\z/} do
     validates :first_name
     validates :last_name
