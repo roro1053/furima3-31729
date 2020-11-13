@@ -3,12 +3,14 @@ RSpec.describe User, type: :model do
   before do
     @user = FactoryBot.build(:user)
   end
-  
+
   describe 'ユーザー新規登録' do
     context '新規登録がうまくいく時' do
       it "nickname,encrypted_password,email,first_name,last_name,first_yomigana,last_yomigana,birth_dateが存在すれば登録できる" do
+      
       end
       it "nicknameが40文字以内なら登録できる" do
+        
       end
       it "passwordが英数混合なら登録できる" do
       end
