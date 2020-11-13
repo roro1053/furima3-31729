@@ -7,16 +7,25 @@ RSpec.describe User, type: :model do
   describe 'ユーザー新規登録' do
     context '新規登録がうまくいく時' do
       it "nickname,encrypted_password,email,first_name,last_name,first_yomigana,last_yomigana,birth_dateが存在すれば登録できる" do
-      
+        expect(@user).to be_valid
       end
       it "nicknameが40文字以内なら登録できる" do
-        
+        @user.nickname = "1234567890123456789012345678901234567890"
+        expect(@user).to be_valid
       end
       it "passwordが英数混合なら登録できる" do
+        @user.password = "12345a"
+        expect(@user).to be_valid
       end
       it "お名前が全角（ひらがな、カタカナ、漢字）なら登録できる" do
+        @user.first_name = "ひカ漢"
+        @user.last_name = "ひカ漢"
+        expect(@user).to be_valid
       end
       it "本名（読み仮名）がカタカナなら登録できる"do
+        @user.first_yomigana = "カタカナ"
+        @user.last_yomigana = "カタカナ"
+        expect(@user).to be_valid
       end
     end
     context '新規登録がうまくいかないとき' do
