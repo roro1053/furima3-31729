@@ -14,7 +14,8 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
       it "passwordが英数混合なら登録できる" do
-        @user.password = "12345a"
+        @user.password = "12345b"
+        @user.password_confirmation = "12345b"
         expect(@user).to be_valid
       end
       it "お名前が全角（ひらがな、カタカナ、漢字）なら登録できる" do
