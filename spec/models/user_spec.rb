@@ -31,6 +31,10 @@ RSpec.describe User, type: :model do
     end
     context '新規登録がうまくいかないとき' do
       it "nicknameが空だと登録できない" do
+       @user.nickname = ""
+       @user.valid?
+       binding.pry
+
       end
       it "nicknameが41文字以上だと登録できない" do
       end
