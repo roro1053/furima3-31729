@@ -33,60 +33,120 @@ RSpec.describe User, type: :model do
       it "nicknameが空だと登録できない" do
        @user.nickname = ""
        @user.valid?
-       binding.pry
-
+       expect(@user.errors.full_messages).to include("Nickname can't be blank")
       end
-      it "nicknameが41文字以上だと登録できない" do
+      it "password_confirmationが空だと登録できない" do
+        @user.password_confirmation = ""
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
-      it "encrypted_passwordが空だと登録できない" do
-      end
-      it "passwordとencrypted_passwordが違うと登録できない" do
+      it "passwordとpassword_confirmationが違うと登録できない" do
+        @user.password = "12345a"
+        @user.password_confirmation = "12345b"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
       it "passwordが空だと登録できない" do
+        @user.password = ""
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it "emailが空だと登録できない" do
+        @user.email = ""
+        @user.valid?
+       expect(@user.errors.full_messages).to include("Email can't be blank")
       end
       it "重複したemailだと登録できない" do
+        @user.save
+        another_user = FactoryBot.build(:user)
+        another_user.email = @user.email
+        another_user.valid?
+        expect(another_user.errors.full_messages).to include("Email has already been taken")
       end
       it "first_nameが空だと登録できない" do
+        @user.first_name = ""
+        @user.valid?
+       expect(@user.errors.full_messages).to include("First name can't be blank", "First name is invalid")
       end
       it "first_nameにアルファベットが入ると登録できない" do
+        @user.first_name = "aaa"
+        @user.valid?
+       expect(@user.errors.full_messages).to include("First name is invalid")
       end
       it "first_nameに数字が入ると登録できない" do
+        @user.first_name = "111"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name is invalid")
       end
       it "last_nameが空だと登録できない" do
+        @user.last_name = ""
+        @user.valid?
+       expect(@user.errors.full_messages).to include("Last name can't be blank")
       end
       it "last_nameにアルファベットが入ると登録できない" do
+        @user.last_name = "aaa"
+        @user.valid?
+       expect(@user.errors.full_messages).to include("Last name is invalid")
       end
       it "last_nameに数字が入ると登録できない" do
+        @user.last_name = "111"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name is invalid")
       end
       it "first_yomiganaが空だと登録できない" do
+        @user.first_yomigana = ""
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First yomigana can't be blank")
       end
       it "first_yomiganaにアルファベットが入ると登録できない" do
+        @user.first_yomigana = "aaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First yomigana is invalid")
       end
       it "first_yomiganaに数字が入ると登録できない" do
+        @user.first_yomigana = "111"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First yomigana is invalid")
       end
       it "first_yomiganaに漢字が入ると登録できない" do
+        @user.first_yomigana = "漢字"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First yomigana is invalid")
       end
       it "first_yomiganaにひらがなが入ると登録できない" do
+        @user.first_yomigana = "ひらがな"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First yomigana is invalid")
       end
       it "last_yomiganaが空だと登録できない" do
+        @user.last_yomigana = ""
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last yomigana can't be blank")
       end
       it "last_yomiganaにアルファベットが入ると登録できない" do
+        @user.last_yomigana = "aaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last yomigana is invalid")
       end
       it "last_yomiganaに数字が入ると登録できない" do
+        @user.last_yomigana = "111"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last yomigana is invalid")
       end
       it "last_yomiganaに漢字が入ると登録できない" do
+        @user.last_yomigana = "漢字"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last yomigana is invalid")
       end
       it "last_yomiganaにひらがなが入ると登録できない" do
+        @user.last_yomigana = "ひらがな"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last yomigana is invalid")
       end
       it "birth_dateが空だと登録できない" do
-      end
-      it "西暦が空だと登録できない" do
-      end
-      it "月が空だと登録できない" do
-      end
-      it "日にちが空だと登録できない" do
+        @user.birth_date = ""
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Birth date can't be blank")
       end
      
     end
