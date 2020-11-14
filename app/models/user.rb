@@ -23,5 +23,5 @@ validates :password, format: { with:  /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.fre
 
  end
 
- has_many :users
+ has_many :items
 end
