@@ -13,9 +13,9 @@ class Item < ApplicationRecord
     validates :shipment_source_id
     validates :shipping_day_id
     validates :price, format: { with: /\A\d+\z/}
+    validates :image
 
   end
-
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
