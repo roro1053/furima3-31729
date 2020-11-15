@@ -3,6 +3,20 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
+  with_options presence: true do
+
+    validates :name
+    validates :comment
+    validates :category_id
+    validates :status_id
+    validates :delivery_fee_id
+    validates :shipment_source_id
+    validates :shipping_day_id
+    validates :price, format: { with: /\A\d+\z/}
+
+  end
+
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :status
