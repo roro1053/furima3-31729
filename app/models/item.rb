@@ -24,10 +24,10 @@ class Item < ApplicationRecord
   belongs_to :shipping_day
 
   with_options numericality: { other_than: 1 } do
-  validates :category_id
-  validates :status_id
-  validates :delivery_fee_id
-  validates :shipment_source_id
-  validates :shipping_day_id
+    validates :category_id
+    validates :status_id
+    validates :delivery_fee_id
+    validates :shipment_source_id
+    validates :shipping_day_id
   end
 end
