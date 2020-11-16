@@ -12,46 +12,6 @@ RSpec.describe Item, type: :model do
       は10000000を下回る,下限は299を超える時且つ半角数値なら出品出来る"
         expect(@item).to be_valid
       end
-      it 'category_idが2以上なら出品出来る' do
-        @item.category_id = '2'
-        expect(@item).to be_valid
-      end
-      it 'category_idが11以下なら出品できる' do
-        @item.category_id = '11'
-        expect(@item).to be_valid
-      end
-      it 'status_idが2以上なら出品出来る' do
-        @item.status_id = '2'
-        expect(@item).to be_valid
-      end
-      it 'status_idが7以下なら出品出来る' do
-        @item.status_id = '7'
-        expect(@item).to be_valid
-      end
-      it 'delivery_fee_idが2以上なら出品出来る' do
-        @item.delivery_fee_id = '2'
-        expect(@item).to be_valid
-      end
-      it 'delivery_fee_idが3以下なら出品出来る' do
-        @item.delivery_fee_id = '3'
-        expect(@item).to be_valid
-      end
-      it 'shipment_source_idが2以上なら出品出来る' do
-        @item.shipment_source_id = '2'
-        expect(@item).to be_valid
-      end
-      it 'shipment_source_idが47以下なら出品出来る' do
-        @item.shipment_source_id = '47'
-        expect(@item).to be_valid
-      end
-      it 'shipping_day_idが2以上なら出品出来る' do
-        @item.shipping_day_id = '2'
-        expect(@item).to be_valid
-      end
-      it 'shipping_day_idが4以下なら出品出来る' do
-        @item.shipping_day_id = '4'
-        expect(@item).to be_valid
-      end
       it 'priceが300以上なら出品出来る' do
         @item.price = '300'
         expect(@item).to be_valid
