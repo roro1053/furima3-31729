@@ -23,9 +23,11 @@ class Item < ApplicationRecord
   belongs_to :shipment_source
   belongs_to :shipping_day
 
-  validates :category_id, numericality: { other_than: 1 }
-  validates :status_id, numericality: { other_than: 1 }
-  validates :delivery_fee_id, numericality: { other_than: 1 }
-  validates :shipment_source_id, numericality: { other_than: 1 }
-  validates :shipping_day_id, numericality: { other_than: 1 }
+  with_options numericality: { other_than: 1 } do
+  validates :category_id
+  validates :status_id
+  validates :delivery_fee_id
+  validates :shipment_source_id
+  validates :shipping_day_id
+  end
 end
