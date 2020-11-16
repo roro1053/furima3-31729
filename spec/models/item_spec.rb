@@ -67,7 +67,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping day must be other than 1')
       end
-      it "piceが300より小さいと出品できない" do
+      it "priceが300より小さいと出品できない" do
         @item.price = "299"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
