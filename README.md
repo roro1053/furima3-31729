@@ -27,6 +27,7 @@
 | delivery_fee_id   | integer    | null: false       |
 | shipment_source_id| integer    | null: false       |
 | shipping_day_id   | integer    | null: false       |
+| price             | integer    | null: false       |
 
 ### Association
 - belongs_to :user

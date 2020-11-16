@@ -12,7 +12,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :first_yomigana
       t.string :last_yomigana
       t.date :birth_date
-      #モデルでバリデーションを記述するので、オプションはつけない
 
       ## Recoverable
       t.string   :reset_password_token
