@@ -12,7 +12,8 @@ class Item < ApplicationRecord
     validates :delivery_fee_id
     validates :shipment_source_id
     validates :shipping_day_id
-    validates :price, format: { with: /\A\d+\z/ }
+    validates :price, format: { with: /\A\d+\z/ },
+                      numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
