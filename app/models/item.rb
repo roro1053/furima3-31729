@@ -1,6 +1,5 @@
 class Item < ApplicationRecord
   belongs_to :user
-  belongs_to :order
   has_one :buy_record
   has_one_attached :image
 
