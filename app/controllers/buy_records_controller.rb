@@ -1,13 +1,21 @@
 class BuyRecordsController < ApplicationController
 
 def index
-  @user_item = UserItem.new
   @item = Item.find_by(id: params[:item_id])
+
+  @user_item = UserItem.new
+  
 end
 
 def create
   @user_item = UserItem.new(user_item_params)
-  @user_item.save
+  if @user_item.valid?
+    @user_item.save
+    redirect_to root_path
+  else 
+    @item = Item.find_by(id: params[:item_id])
+    render :index
+  end
 
 end
 
