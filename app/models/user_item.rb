@@ -1,6 +1,6 @@
 class UserItem
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :prefecture_id, :citr, :house_number, :building_name, :phone_number, :postal_cord, :buy_record
+  attr_accessor :user_id, :item_id, :prefecture_id, :city, :house_number, :building_name, :phone_number, :postal_cord, :buy_record
 
  with_options presence: true do
   validates :city
@@ -11,7 +11,7 @@ class UserItem
  end
  
  def save
-  BuyRecord.create(user_id: user.id,item_id: item.id)
-  ShippingAddress.create(prefecture_id: purefecture_id, city: city, house_number: house_number, building_name: building_name, phone_number: phone_number,postal_number: postal_number,buy_record_id: buy_record.id)
+  buy_record = BuyRecord.create(user_id: user_id,item_id: item_id)
+  ShippingAddress.create(prefecture_id: prefecture_id, city: city, house_number: house_number, building_name: building_name, phone_number: phone_number,postal_cord: postal_cord,buy_record_id: buy_record.id)
  end
 end
