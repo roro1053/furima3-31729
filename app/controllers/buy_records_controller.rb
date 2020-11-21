@@ -2,6 +2,7 @@ class BuyRecordsController < ApplicationController
 
 def index
   @user_item = UserItem.new
+  @item = Item.find_by(id: params[:item_id])
 end
 
 def create
