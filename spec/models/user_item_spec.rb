@@ -61,6 +61,11 @@ RSpec.describe UserItem, type: :model do
         @user_item.valid?
         expect(@user_item.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
       end
+      it "tokenが空だと購入できない" do
+        @user_item.token = ""
+        @user_item.valid?
+        expect(@user_item.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end
