@@ -1,13 +1,12 @@
 class BuyRecordsController < ApplicationController
+  before_action :set_user_item, only: [:index, :create]
 
 def index
-  @item = Item.find_by(id: params[:item_id])
   @user_item = UserItem.new  
 end
 
 def create
   @user_item = UserItem.new(user_item_params)
-  @item = Item.find_by(id: params[:item_id])
   if @user_item.valid?
     pay_item
     @user_item.save
@@ -15,7 +14,6 @@ def create
   else 
     render :index
   end
-
 end
 
 private
@@ -31,6 +29,10 @@ def pay_item
     card: user_item_params[:token],
     currency: 'jpy'
   )
+end
+
+def set_user_item
+  @item = Item.find_by(id: params[:item_id])
 end
 
 end
