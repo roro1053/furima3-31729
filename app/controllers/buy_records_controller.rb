@@ -1,7 +1,13 @@
 class BuyRecordsController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create] 
   before_action :set_user_item, only: [:index, :create]
 
 def index
+  if current_user.id == @item.user_id
+  redirect_to root_path
+  #elsif @item.buy_record.present?
+  #redirect_to root_path
+  end
   @user_item = UserItem.new  
 end
 

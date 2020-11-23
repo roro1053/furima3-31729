@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
+   
   end
 
   def new
@@ -24,7 +25,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to action: :index unless user_signed_in? && current_user.id == @item.user_id
+    unless user_signed_in? && current_user.id == @item.user_id
+    redirect_to action: :index 
+    end
+    #unless @item.buy_record.nil?
+     # redirect_to action: :index
+    #end
   end
 
   def update
